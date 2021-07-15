@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- status="off",log4j2把自身事件记录到控制台的配置，off表示不记录，其余的记录有trace，debug，info，warn，error，fatal -->
+<!-- monitorInterval表示检测更改配置的时间,单位是秒,最小间隔为5秒,0或负数表示不检测 -->
+<Configuration status="ERROR">
+  <!-- 常量引用 -->
+  <Properties>
+    <!-- 配置日志文件输出目录 -->
+<!--    <Property name="FORMAT0">%date{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%thread][%file:%line] - %msg</Property>-->
+<!--    <Property name="FORMAT1">%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread][%logger{36}:%line] - %msg%n</Property>-->
+<!--    <Property name="FORMAT2">%date{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%thread][%file:%line] %l{36} - %msg%n</Property>-->
+    <Property name="FORMAT">%date{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%thread] %-5l{36} - %msg%n</Property>
+    <Property name="ROOT_LOG_LEVEL">ERROR</Property>
+  </Properties>
+  <!-- appender用于接收各种日志 -->
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="${FORMAT}"/>
+    </Console>
+  </Appenders>
+
+  <Loggers>
+    <Root level="DEBUG">
+      <AppenderRef ref="Console"/>
+    </Root>
+    <!--    <logger name="java.sql" level="DEBUG"></logger>-->
+<!--        <logger name="org.apache.ibatis" level="INFO"></logger>-->
+<!--        <logger name="org.apache.ibatis.demo.interceptor" level="DEBUG"></logger>-->
+  </Loggers>
+</Configuration>
